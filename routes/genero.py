@@ -1,9 +1,10 @@
-from app import app
-from flask import request
+from flask import request, Blueprint
 from models.genero import Genero
 
+genero_bp = Blueprint("genero", __name__, url_prefix="/api/generos")
 
-@app.route("/genero/", methods=["GET"])
+
+@genero_bp.route("", methods=["GET"])
 def listGeneros():
     """
     _summary_
@@ -22,7 +23,7 @@ def listGeneros():
     return {"mensaje": mensaje, "generos": generos}
 
 
-@app.route("/genero/", methods=["POST"])
+@genero_bp.route("", methods=["POST"])
 def addGenero():
     try:
         mensaje = None
@@ -41,7 +42,7 @@ def addGenero():
     return {"estado": estado, "mensaje": mensaje}
 
 
-@app.route("/genero/<string:genero_id>", methods=["GET"])
+@genero_bp.route("/<string:genero_id>", methods=["GET"])
 def getGeneroById(genero_id):
     """
     Función que retorna un genero específico por su ID.
@@ -57,7 +58,7 @@ def getGeneroById(genero_id):
     return {"mensaje": mensaje, "genero": genero}
 
 
-@app.route("/genero/<string:genero_id>", methods=["PUT"])
+@genero_bp.route("/<string:genero_id>", methods=["PUT"])
 def updateGenero(genero_id):
     """
     Función que actualiza un género existente por su ID.
@@ -87,7 +88,7 @@ def updateGenero(genero_id):
     return {"estado": estado, "mensaje": mensaje}
 
 
-@app.route("/genero/<string:genero_id>", methods=["DELETE"])
+@genero_bp.route("/<string:genero_id>", methods=["DELETE"])
 def deleteGenero(genero_id):
     """
     Función que elimina un género por su ID.
@@ -100,12 +101,6 @@ def deleteGenero(genero_id):
         if not genero:
             mensaje = "Genero no encontrado para eliminar."
             return {"estado": False, "mensaje": mensaje}
-
-        # Opcional: Podrías añadir una validación aquí
-        # para evitar eliminar un género que está referenciado por películas.
-        # Si lo eliminas, el campo 'genero' en las películas que lo referencian
-        # quedará 'roto' o nulo, dependiendo de cómo lo maneje MongoEngine/MongoDB.
-        # Para esta implementación sencilla, simplemente lo eliminamos.
 
         genero.delete()  # Eliminar el documento
         estado = True

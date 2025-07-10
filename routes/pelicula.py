@@ -1,10 +1,11 @@
-from app import app
-from flask import request
+from flask import request, Blueprint
 from models.pelicula import Pelicula
 from models.genero import Genero
 
+pelicula_bp = Blueprint("pelicula", __name__, url_prefix="/api/peliculas")
 
-@app.route("/pelicula/", methods=["GET"])
+
+@pelicula_bp.route("", methods=["GET"])
 def listPelicula():
     try:
         mensaje = None
@@ -15,7 +16,7 @@ def listPelicula():
     return {"mensaje": mensaje, "peliculas": peliculas}
 
 
-@app.route("/pelicula/", methods=["POST"])
+@pelicula_bp.route("", methods=["POST"])
 def addPelicula():
     try:
         mensaje = None
@@ -53,7 +54,7 @@ def addPelicula():
     return {"estado": estado, "mensaje": mensaje}
 
 
-@app.route("/pelicula/<string:pelicula_id>", methods=["GET"])
+@pelicula_bp.route("/<string:pelicula_id>", methods=["GET"])
 def getPeliculaById(pelicula_id):
     """
     Función que retorna una película específica por su ID.
@@ -69,7 +70,7 @@ def getPeliculaById(pelicula_id):
     return {"mensaje": mensaje, "pelicula": pelicula}
 
 
-@app.route("/pelicula/<string:pelicula_id>", methods=["PUT"])
+@pelicula_bp.route("/<string:pelicula_id>", methods=["PUT"])
 def updatePelicula(pelicula_id):
     """
     Función que actualiza una película existente por su ID.
@@ -114,7 +115,7 @@ def updatePelicula(pelicula_id):
     return {"estado": estado, "mensaje": mensaje}
 
 
-@app.route("/pelicula/<string:pelicula_id>", methods=["DELETE"])
+@pelicula_bp.route("/<string:pelicula_id>", methods=["DELETE"])
 def deletePelicula(pelicula_id):
     try:
         mensaje = None

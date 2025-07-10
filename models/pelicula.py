@@ -1,4 +1,4 @@
-from mongoengine import *
+from mongoengine import Document, StringField, IntField, ReferenceField
 from models.genero import Genero
 
 

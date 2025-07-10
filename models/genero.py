@@ -1,4 +1,4 @@
-from mongoengine import *
+from mongoengine import Document, StringField
 
 
 # Crear clase que representa la colección Genero en la base de datos
