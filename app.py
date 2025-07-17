@@ -1,7 +1,7 @@
 from flask import Flask
-from database.db import init_db
-from routes.pelicula import pelicula_bp
-from routes.genero import genero_bp
+from src.database.db import init_db
+from src.routes.pelicula import pelicula_bp
+from src.routes.genero import genero_bp
 
 
 def create_app():
