@@ -1,31 +1,31 @@
-# Movies_Flask_Mongo_App
+# 🎬 Movies_Flask_Mongo_App
 
 API simple para gestionar películas y géneros usando Flask y MongoDB.
 
 ---
 
-## Tecnologías
+## 🛠️ Tecnologías
 
-- Flask
-- MongoDB + MongoEngine
+- ⚡ Flask
+- 🍃 MongoDB + MongoEngine
 
-## Instalación
+## 🚀 Instalación
 
-1. Cloná el repo y entrá a la carpeta:
+1. 🧑‍💻 Cloná el repo y entrá a la carpeta:
    ```bash
-   git clone https://github.com/dovinhoyos/Movies_Flask_Mongo_App.git
+   git clone <repo-url>
    cd Movies_Flask_Mongo_App
    ```
-2. Instalá dependencias:
+2. 📦 Instalá dependencias:
    ```bash
    pip install -r requirements.txt
    ```
-3. Configurá tu `.env`:
+3. ⚙️ Configurá tu `.env`:
    ```
    MONGO_DBNAME=GestionPeliculas
    MONGO_URI=mongodb://localhost:27017/GestionPeliculas
    ```
-4. Levantá el servidor:
+4. ▶️ Levantá el servidor:
    ```bash
    python3 app.py
    ```
@@ -64,32 +64,32 @@ Movies_Flask_Mongo_App/
 └── README.md             # Documentación
 ```
 
-## Endpoints principales
+## 📚 Endpoints principales
 
-### Películas
-- `GET /api/peliculas`: Lista todas las películas.
-- `POST /api/peliculas`: Crea una película.
-- `GET /api/peliculas/<id>`: Trae una película por id.
-- `PUT /api/peliculas/<id>`: Actualiza una película.
-- `DELETE /api/peliculas/<id>`: Elimina una película.
+### 🎬 Películas
+- `GET /api/peliculas` — Lista todas las películas.
+- `POST /api/peliculas` — Crea una película.
+- `GET /api/peliculas/<id>` — Trae una película por id.
+- `PUT /api/peliculas/<id>` — Actualiza una película.
+- `DELETE /api/peliculas/<id>` — Elimina una película.
 
-### Géneros
-- `GET /api/generos`: Lista todos los géneros.
-- `POST /api/generos`: Crea un género.
-- `GET /api/generos/<id>`: Trae un género por id.
-- `PUT /api/generos/<id>`: Actualiza un género.
-- `DELETE /api/generos/<id>`: Elimina un género.
+### 🎭 Géneros
+- `GET /api/generos` — Lista todos los géneros.
+- `POST /api/generos` — Crea un género.
+- `GET /api/generos/<id>` — Trae un género por id.
+- `PUT /api/generos/<id>` — Actualiza un género.
+- `DELETE /api/generos/<id>` — Elimina un género.
 
-## Ejemplo rápido con curl
+## ⚡ Ejemplo rápido con curl
 
 ```bash
-# Crear género
+# 🎭 Crear género
 curl -X POST http://localhost:5000/api/generos -H "Content-Type: application/json" -d '{"nombre": "Comedia"}'
 
-# Crear película
+# 🎬 Crear película
 curl -X POST http://localhost:5000/api/peliculas -H "Content-Type: application/json" -d '{"codigo": 101, "titulo": "Risas", "protagonista": "Ana", "duracion": 90, "resumen": "Comedia divertida", "foto": "risas.jpg", "genero": "<ID_DEL_GENERO>"}'
 
-# Listar películas
+# 📋 Listar películas
 curl http://localhost:5000/api/peliculas
 ```
 
