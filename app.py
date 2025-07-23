@@ -2,6 +2,7 @@ from flask import Flask
 from src.database.db import init_db
 from src.routes.pelicula import pelicula_bp
 from src.routes.genero import genero_bp
+from flask_cors import CORS
 
 
 def create_app():
@@ -9,6 +10,11 @@ def create_app():
     Crea una instancia de la aplicación Flask y configura el entorno.
     """
     app = Flask(__name__)
+
+    CORS(
+        app,
+        resources={r"/*": {"origins": ["http://localhost:5173", "https://miapp.com"]}},
+    )
 
     app.config["UPLOAD_FOLDER"] = "./static/imagenes"
     init_db(app)
